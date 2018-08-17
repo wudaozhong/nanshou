@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" metadata-complete="true" version="4.0">
+  <display-name>
+  	Java How to Program JSP
+  	and Servlet Chapter Examples
+  </display-name>
+  <description>
+    This is the Web application in which we
+    demostrate our JSP and Servlet examples.
+  </description>
+  <servlet>
+    <servlet-name>welcome1</servlet-name>
+    <servlet-class>com.ch0.WelcomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>welcome1</servlet-name>
+    <url-pattern>/welcome1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>welcome2</servlet-name>
+    <servlet-class>com.ch0.WelcomeServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>welcome2</servlet-name>
+    <url-pattern>/welcome2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>welcome3</servlet-name>
+    <servlet-class>com.ch0.WelcomeServlet3</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>welcome3</servlet-name>
+    <url-pattern>/welcome3</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>redirect</servlet-name>
+    <servlet-class>com.ch0.RedirectServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>redirect</servlet-name>
+    <url-pattern>/redirect</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>animalsurvey</servlet-name>
+    <servlet-class>com.ch0.SurveyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>animalsurvey</servlet-name>
+    <url-pattern>/animalsurvey</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>createdatabase</servlet-name>
+    <servlet-class>com.ch0.CreateDBServlet</servlet-class>
+   </servlet>
+  <servlet-mapping>
+    <servlet-name>createdatabase</servlet-name>
+    <url-pattern>/createdatabase</url-pattern>
+  </servlet-mapping>
+</web-app>
