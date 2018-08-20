@@ -2,7 +2,9 @@ package com.ch0;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 
@@ -13,24 +15,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.ResultSet;
-import com.mysql.jdbc.Statement;
-
 public class SurveyServlet extends HttpServlet {
 	private Connection connection;
 	private Statement statement;
 	
 	public void init( ServletConfig config)throws ServletException{
 		try {
-			System.setProperty( "db2j.system.home", 
-				config.getInitParameter( "databaseLocation" ));
 			
-			Class.forName( config.getInitParameter( "databaseDriver" ) );
-			connection = (Connection) DriverManager.getConnection(
-				config.getInitParameter( "databaseName" ) );
-			
-			statement = (Statement) connection.createStatement();
+			connection = Connector.getConnector();
+			statement = connection.createStatement();
 			
 		}catch ( Exception exception ) {
 			exception.printStackTrace();
@@ -58,18 +51,18 @@ public class SurveyServlet extends HttpServlet {
 		
 		try {
 			query = "UPDATE surveyresults SET votes = votes + 1" + 
-				"WHERE id = " + value;
+				"WHERE id = " + value;	
 			statement.executeUpdate( query );
 			
 			query = "SELECT sum(votes) FROM surveyresults";
-			ResultSet totalRS = (ResultSet) statement.executeQuery( query );
+			ResultSet totalRS = statement.executeQuery( query );
 			totalRS.next();
 			int total = totalRS.getInt( 1 );
 			
 			query = "SELECT surveyoption, votes, id FROM surveyresults" +
 				"ORDER BY id";
 			
-			ResultSet resultsRS = (ResultSet) statement.executeQuery( query );
+			ResultSet resultsRS = statement.executeQuery( query );
 			
 			out.println( "<title>Thank you!</title>" );
 			out.println( "</head>" );
